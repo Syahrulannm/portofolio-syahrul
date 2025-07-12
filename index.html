@@ -88,29 +88,23 @@
 
     <!-- 👤 Tentang -->
     <section id="tentang" class="py-20 px-6 scroll-mt-20 bg-gradient-to-br from-slate-100 via-slate-50 to-slate-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-900 transition duration-300">
-      <div class="max-w-3xl mx-auto text-center space-y-10">
-        <!-- Versi bahasa indonesia -->
+      <div class="relative max-w-3xl mx-auto text-center space-y-10">
+        <!-- Tombol di pojok -->
+        <button
+          onclick="toggleBahasa()"
+          class="absolute right-4 px-2 py-1 text-blue-600 border border-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition text-sm sm:text-base z-10"
+        >
+          🌐 ID / EN
+        </button>
         <div>
           <h3 data-aos="zoom-in" class="text-3xl text-gray-800 dark:text-white font-bold mb-6 text-center">Tentang Saya</h3>
-          <p data-aos="fade-up" data-aos-delay="200" class="sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p id="paragraf1" data-aos="fade-up" data-aos-delay="200" class="sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
             Saya adalah seorang <strong>Front-End Developer</strong> yang sedang fokus membangun keahlian melalui praktik langsung dan proyek nyata. Lulusan D3 Teknik Informatika tahun 2023, kini saya berkomitmen untuk terus berkembang dan
             siap menghadapi tantangan di dunia pengembangan web modern — dari HTML, CSS, Tailwind CSS hingga JavaScript.
           </p>
-          <p data-aos="fade-up" data-aos-delay="200" class="sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
+          <p id="paragraf2" data-aos="fade-up" data-aos-delay="200" class="sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
             Dengan pendekatan belajar yang terstruktur dan konsisten, saya telah mengerjakan beberapa mini project yang bisa Anda lihat di halaman portofolio ini. Saya percaya bahwa kunci utama adalah terus berproses, siap beradaptasi, dan
             terbuka terhadap kolaborasi maupun peluang kerja freelance.
-          </p>
-        </div>
-        <!-- 🇺🇸 English Version -->
-        <div>
-          <h3 data-aos="zoom-in" class="text-3xl text-gray-800 dark:text-white font-bold mb-6 text-center">About Me</h3>
-          <p data-aos="fade-up" data-aos-delay="200" class="sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            I’m a <strong>Front-End Developer</strong> currently focused on developing real-world skills through hands-on projects. I graduated with a Diploma in Informatics Engineering (2023), and I’m fully committed to continuous growth
-            and confident in tackling modern web development — from HTML, CSS, Tailwind CSS, to JavaScript.
-          </p>
-          <p data-aos="fade-up" data-aos-delay="200" class="sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mt-4">
-            With a structured and consistent learning approach, I’ve built several mini-projects showcased on this portfolio. I believe in growing through practice and staying open to collaboration, freelance opportunities, and real-world
-            challenges.
           </p>
         </div>
         <!-- Penutup text -->
@@ -225,6 +219,21 @@
             </div>
             <a href="https://undangan-digital-syahrul.netlify.app/" target="_blank" class="block mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">🔗 Lihat Proyek</a>
             <a href="https://github.com/Syahrulannm/undangan-digital" target="_blank" class="block text-sm text-gray-600 dark:text-gray-400 hover:underline mt-1">💻 Lihat Kode</a>
+          </div>
+        </div>
+
+        <!-- Kartu Proyek 7 -->
+        <div data-aos="fade-up" data-aos-delay="100" class="border-2xl rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-xl transition">
+          <img src="assets/preview-company.jpeg" alt="Preview Proyek" class="w-full h-30 object-cover" />
+          <div class="p-4 sm:p-6">
+            <h4 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Company Profil - Syahrul.dev</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-300">Website portofolio interaktif dan responsif menggunakan Tailwind CSS & JavaScript. Fitur dark mode, animasi, dan layout profesional.</p>
+            <div class="flex items-center gap-2 mt-4">
+              <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">HTML</span>
+              <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">CSS</span>
+            </div>
+            <a href="https://company-profil-syahrul.netlify.app/" target="_blank" class="block mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">🔗 Lihat Proyek</a>
+            <a href="https://github.com/Syahrulannm/company-profil-syahrul" target="_blank" class="block text-sm text-gray-600 dark:text-gray-400 hover:underline mt-1">💻 Lihat Kode</a>
           </div>
         </div>
         <!-- 🧩 Tambahkan kartu lain nanti ! ! -->
