@@ -4,45 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tentang Saya - Syahrul.dev</title>
+
+    <!-- Deteksi tema otomatis  -->
+    <script>
+      if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+
+    <script>
+      if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <!-- Navbar -->
-  <header class="sticky top-0 z-50 =">
-    <nav class="bg-white dark:bg-gray-900 shadow-md px-4 py-3">
-      <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-bold text-blue-600 dark:text-blue-500">Syahrul.dev</div>
-
-        <!-- Tombol hamburger -->
-        <button id="toggleBtn" class="md:hidden text-2xl px-2 rounded-lg border border-gray-800 dark:border-gray-100 text-gray-800 dark:text-gray-100 transition">☰</button>
-
-        <!-- Dekstop Menu -->
-        <ul id="menu" class="hidden md:flex space-x-6 text-gray-700 dark:text-white font-semibold">
-          <li><a href="index.html#beranda" class="hover:text-blue-500">Beranda</a></li>
-          <li><a href="about.html" class="hover:text-blue-500 hover:underline">Tentang</a></li>
-          <li><a href="project.html" class="hover:text-blue-500 hover:underline">Proyek</a></li>
-          <li><a href="index.html#kontak" class="hover:text-blue-500">Kontak</a></li>
-        </ul>
-      </div>
-
-      <!-- Menu di HP -->
-      <ul id="mobileMenu" class="md:hidden hidden mt-4 space-y-2 text-gray-700 dark:text-white font-semibold">
-        <li><a href="index.html#beranda" class="hover:text-blue-500">Beranda</a></li>
-        <li><a href="about.html" class="hover:text-blue-500 hover:underline">Tentang</a></li>
-        <li><a href="project.html" class="hover:text-blue-500 hover:underline">Proyek</a></li>
-        <li><a href="index.html#kontak" class="hover:text-blue-500">Kontak</a></li>
-      </ul>
-    </nav>
-  </header>
-
   <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white font-sans transition duration-300">
-    <!-- Header -->
+    <!-- Include header -->
+    <div id="navContainer"></div>
+
+    <script defer>
+      fetch("header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("navContainer").innerHTML = data;
+        });
+    </script>
+
+    <!-- Hero Section -->
     <section class="text-center py-20 px-6 bg-gradient-to-br from-white to-slate-100 dark:from-gray-900 dark:to-gray-800">
       <h1 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Tentang Saya</h1>
       <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Seorang Frontend Developer yang percaya bahwa tampilan web yang rapi dan responsif adalah bagian dari pengalaman terbaik pengguna.</p>
     </section>
 
-    <section class="max-w-4xl mx-auto py-16 px-6">
+    <section class="max-w-4xl mx-auto py-16 px-6 text-center">
       <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Perjalanan Saya</h2>
       <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
         Saya lulusan D3 Teknik Informatika tahun 2023. Awalnya hanya mengenal dasar HTML & CSS, tapi belakangan saya mulai fokus mendalami frontend development secara serius dan terstruktur.
@@ -79,17 +80,7 @@
     <!-- Footer -->
     <footer class="text-center text-sm text-gray-400 py-6">&copy; 2025 Syahrul.dev - Dibuat dengan ❤️ dan semangat belajar</footer>
 
-    <!-- Highlight Active -->
     <script>
-      const navLinks = document.querySelectorAll("nav a");
-      const currentUrl = window.location.pathname;
-
-      navLinks.forEach((link) => {
-        if (link.getAttribute("href") === currentUrl || currentUrl.includes(link.getAttribute("href"))) {
-          link.classList.add("text-blue-600", "dark:text-blue-400", "font-semibold", "underline");
-        }
-      });
-
       //Tombol Humbleger Responsive HP
       const toggleBtn = document.getElementById("toggleBtn");
       const mobileMenu = document.getElementById("mobileMenu");

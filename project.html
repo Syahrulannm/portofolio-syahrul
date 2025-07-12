@@ -4,38 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Proyek Saya - Syahrul.dev</title>
+    <!-- Deteksi Tema Otomatis  -->
+    <script>
+      if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <!-- Navbar -->
-  <header class="sticky top-0 z-50 =">
-    <nav class="bg-white dark:bg-gray-900 shadow-md px-4 py-3">
-      <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-bold text-blue-600 dark:text-blue-500">Syahrul.dev</div>
-
-        <!-- Tombol hamburger -->
-        <button id="toggleBtn" class="md:hidden text-2xl px-2 rounded-lg border border-gray-800 dark:border-gray-100 text-gray-800 dark:text-gray-100 transition">☰</button>
-
-        <!-- Dekstop Menu -->
-        <ul id="menu" class="hidden md:flex space-x-6 text-gray-700 dark:text-white font-semibold">
-          <li><a href="index.html#beranda" class="hover:text-blue-500">Beranda</a></li>
-          <li><a href="about.html" class="hover:text-blue-500 hover:underline">Tentang</a></li>
-          <li><a href="project.html" class="hover:text-blue-500 hover:underline">Proyek</a></li>
-          <li><a href="index.html#kontak" class="hover:text-blue-500">Kontak</a></li>
-        </ul>
-      </div>
-
-      <!-- Menu di HP -->
-      <ul id="mobileMenu" class="md:hidden hidden mt-4 space-y-2 text-gray-700 dark:text-white font-semibold">
-        <li><a href="index.html#beranda" class="hover:text-blue-500">Beranda</a></li>
-        <li><a href="about.html" class="hover:text-blue-500 hover:underline">Tentang</a></li>
-        <li><a href="project.html" class="hover:text-blue-500 hover:underline">Proyek</a></li>
-        <li><a href="index.html#kontak" class="hover:text-blue-500">Kontak</a></li>
-      </ul>
-    </nav>
-  </header>
-
   <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white font-sans transition duration-300">
+    <!-- Include header -->
+    <div id="navContainer"></div>
+
+    <script defer>
+      fetch("header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("navContainer").innerHTML = data;
+        });
+    </script>
+
     <!-- Header -->
     <section class="text-center py-20 px-6 bg-gradient-to-br from-white to-slate-100 dark:from-gray-900 dark:to-gray-800">
       <h1 class="text-4xl font-bold mb-4">Proyek Saya</h1>
@@ -52,7 +44,7 @@
     <!-- Grid Proyek -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-16 max-w-6xl mx-auto">
       <!-- Kartu Proyek -->
-      <div data-category="html tailwind javascript" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+      <div data-category="html tailwind javascript" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-105">
         <img src="assets/preview-company.jpeg" alt="Landing Page Freelancer" class="w-full h-48 object-cover" />
         <div class="p-6">
           <h3 class="text-xl font-bold mb-2">Landing Page Freelancer</h3>
@@ -66,7 +58,7 @@
       </div>
 
       <!-- Undangan Digital -->
-      <div data-category="tailwind javascript" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+      <div data-category="tailwind javascript" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-105">
         <img src="assets/preview-undangan-digital.jpeg" alt="Undangan Pernikahan Digital" class="w-full h-48 object-cover" />
         <div class="p-6">
           <h3 class="text-xl font-bold mb-2">Undangan Pernikahan Digital</h3>
@@ -80,7 +72,7 @@
       </div>
 
       <!-- Jual Motor -->
-      <div data-category="html tailwind" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+      <div data-category="html tailwind" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-105">
         <img src="assets/preview-landing-motor.png" alt="Landing Page Jual Motor" class="w-full h-48 object-cover" />
         <div class="p-6">
           <h3 class="text-xl font-bold mb-2">Landing Page Jual Motor</h3>
@@ -97,25 +89,16 @@
     <!-- Footer -->
     <footer class="text-center text-sm text-gray-400 py-6">&copy; 2025 Syahrul.dev - Semua proyek dibuat mandiri sebagai bukti keterampilan nyata</footer>
 
-    <!-- Highlight Active -->
     <script>
-      const navLinks = document.querySelectorAll("nav a");
-      const currentUrl = window.location.pathname;
-
-      navLinks.forEach((link) => {
-        if (link.getAttribute("href") === currentUrl || currentUrl.includes(link.getAttribute("href"))) {
-          link.classList.add("text-blue-600", "dark:text-blue-400", "font-semibold", "underline");
-        }
-      });
-
       //Tombol Humbleger Responsive HP
       const toggleBtn = document.getElementById("toggleBtn");
       const mobileMenu = document.getElementById("mobileMenu");
 
-      toggleBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-
+      if (toggleBtn && mobileMenu) {
+        toggleBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
       //Filter data
       const filterButtons = document.querySelectorAll(".filter-btn");
       const projectCards = document.querySelectorAll(".project-card");

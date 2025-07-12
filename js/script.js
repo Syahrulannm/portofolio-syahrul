@@ -21,10 +21,11 @@ window.onload = () => {
 const toggleBtn = document.getElementById("toggleBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 
-toggleBtn.addEventListener("click", () => {
-  mobileMenu.classList.toggle("hidden");
-});
-
+if (toggleBtn && mobileMenu) {
+  toggleBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+}
 // 🌐 Validasi Form Kontak
 //Notifikasi Visual(Ganti alert)
 function tampilkanNotif(pesan, tipe = "success") {

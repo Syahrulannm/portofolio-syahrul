@@ -4,8 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-
     <title>Syahrul – Frontend Developer & Web Portfolio</title>
+    <!-- Deteksi Tema Otomatis  -->
+    <script>
+      if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 🔗 AOS CSS (di <head>) -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
@@ -27,21 +34,6 @@
     <meta name="twitter:description" content="Portofolio digital interaktif Syahrul Annam. Jelajahi proyek nyata dan layanan web development yang profesional." />
     <meta name="twitter:image" content="https://portofolio-syahrul.netlify.app/img/preview.jpg" />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Syahrul Annam",
-        "url": "https://portofolio-syahrul.netlify.app",
-        "sameAs": ["https://github.com/Syahrulannm", "https://linkedin.com/in/syahrul-annam"],
-        "jobTitle": "Frontend Developer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Syahrul.dev"
-        }
-      }
-    </script>
-
     <script>
       //Konfigurasi Tailwind(Untuk darkMode:'class')
       tailwind.config = {
@@ -53,39 +45,22 @@
   <!-- 🔗 AOS JS (sebelum [body] ) -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init();
+    window.addEventListener("load", () => {
+      AOS.init();
+    });
   </script>
 
   <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white transition duration-300">
-    <!-- Navbar -->
-    <header class="sticky top-0 z-50 =">
-      <nav class="bg-white dark:bg-gray-900 shadow-md px-4 py-3">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-          <div class="text-2xl font-bold text-blue-600 dark:text-blue-500">Syahrul.dev</div>
+    <!-- Include header -->
+    <div id="navContainer"></div>
 
-          <!-- Tombol hamburger -->
-          <button id="toggleBtn" class="md:hidden text-2xl px-2 rounded-lg border border-gray-800 dark:border-gray-100 text-gray-800 dark:text-gray-100 transition">☰</button>
-
-          <!-- Dekstop Menu -->
-          <ul id="menu" class="hidden md:flex space-x-6 text-gray-700 dark:text-white font-semibold">
-            <li><a href="#beranda" class="hover:text-blue-500">Beranda</a></li>
-            <li><a href="about.html" class="hover:text-blue-500 hover:underline">Tentang</a></li>
-            <li><a href="#skill" class="hover:text-blue-500">Skill</a></li>
-            <li><a href="project.html" class="hover:text-blue-500 hover:underline">Proyek</a></li>
-            <li><a href="#kontak" class="hover:text-blue-500">Kontak</a></li>
-          </ul>
-        </div>
-
-        <!-- Menu di HP -->
-        <ul id="mobileMenu" class="md:hidden hidden mt-4 space-y-2 text-gray-700 dark:text-white font-semibold">
-          <li><a href="#beranda" class="hover:text-blue-500">Beranda</a></li>
-          <li><a href="about.html" class="hover:text-blue-500 hover:underline">Tentang</a></li>
-          <li><a href="#skill" class="hover:text-blue-500">Skill</a></li>
-          <li><a href="project.html" class="hover:text-blue-500 hover:underline">Proyek</a></li>
-          <li><a href="#kontak" class="hover:text-blue-500">Kontak</a></li>
-        </ul>
-      </nav>
-    </header>
+    <script defer>
+      fetch("header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("navContainer").innerHTML = data;
+        });
+    </script>
 
     <!-- 🏠 Hero Section -->
     <section id="beranda" class="py-20 px-6 scroll-mt-20 bg-gradient-to-br from-white via-slate-100 to-slate-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition duration-300">
