@@ -1,21 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-    <title>Syahrul – Frontend Developer & Web Portfolio</title>
-    <!-- Deteksi Tema Otomatis  -->
-    <script>
-      if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    </script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 🔗 AOS CSS (di <head>) -->
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <!-- ✅ Meta Dasar -->
     <meta name="description" content="Portofolio Syahrul.dev – Frontend Developer yang fokus membangun website modern, responsif, dan interaktif menggunakan HTML, CSS, Tailwind, dan JavaScript." />
     <meta name="keywords" content="Frontend Developer, Portofolio, Web Developer, Tailwind CSS, JavaScript, HTML, CSS, Syahrul" />
@@ -33,27 +20,25 @@
     <meta name="twitter:title" content="Syahrul.dev – Frontend Developer Portfolio" />
     <meta name="twitter:description" content="Portofolio digital interaktif Syahrul Annam. Jelajahi proyek nyata dan layanan web development yang profesional." />
     <meta name="twitter:image" content="https://portofolio-syahrul.netlify.app/img/preview.jpg" />
+    <!-- <link rel="icon" href="img/favicon.ico" type="image/x-icon" /> -->
+    <title>Syahrul – Frontend Developer & Web Portfolio</title>
+    <script src="js/theme.js"></script>
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 🔗 AOS CSS (di <head>) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <!-- 🔗 AOS JS (sebelum [body] ) -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-      //Konfigurasi Tailwind(Untuk darkMode:'class')
-      tailwind.config = {
-        darkMode: "class",
-      };
+      window.addEventListener("load", () => {
+        AOS.init();
+      });
     </script>
   </head>
-
-  <!-- 🔗 AOS JS (sebelum [body] ) -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    window.addEventListener("load", () => {
-      AOS.init();
-    });
-  </script>
 
   <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white transition duration-300">
     <!-- Include header -->
     <div id="navContainer"></div>
-
     <script defer>
       fetch("components/header.html")
         .then((res) => res.text())

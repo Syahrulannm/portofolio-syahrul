@@ -3,23 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Proyek Saya - Syahrul.dev</title>
-    <!-- Deteksi Tema Otomatis  -->
-    <script>
-      if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    </script>
+    <!-- SEO -->
+    <meta name="description" content="Kumpulan proyek nyata dari Syahrul.dev, seorang Front-End Developer. Dibuat dengan Tailwind dan JavaScript." />
+    <meta name="author" content="Syahrul Annam" />
+    <meta property="og:title" content="Proyek – Syahrul.dev" />
+    <meta property="og:image" content="https://portofolio-syahrul.netlify.app/img/preview.jpg" />
+    <meta property="og:url" content="https://portofolio-syahrul.netlify.app/proyek.html" />
 
+    <title>Proyek Saya - Syahrul.dev</title>
+    <script src="js/theme.js"></script>
+
+    <!-- 🔗 AOS CSS (sebelum [body] ) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <!-- 🔗 AOS JS (sebelum [body] ) -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      window.addEventListener("load", () => {
+        AOS.init();
+      });
+    </script>
+    <!-- Deteksi Tema Otomatis  -->
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white font-sans transition duration-300">
     <!-- Include header -->
     <div id="navContainer"></div>
-
     <script defer>
       fetch("components/header.html")
         .then((res) => res.text())
@@ -28,23 +37,40 @@
         });
     </script>
 
-    <!-- Header -->
+    <div id="filterContainer"></div>
+    <script>
+      fetch("components/filter-project.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("filterContainer").innerHTML = data;
+          if (typeof initFilter === "function") initFilter(); // jalankan JS setelah di-load
+        });
+    </script>
+
+    <!-- Hero section -->
+
     <section class="text-center py-20 px-6 bg-gradient-to-br from-white to-slate-100 dark:from-gray-900 dark:to-gray-800">
       <h1 class="text-4xl font-bold mb-4">Proyek Saya</h1>
-      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Berikut beberapa proyek yang telah saya kerjakan sebagai bagian dari perjalanan belajar dan pengembangan portofolio.</p>
+      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-4">Berikut beberapa proyek yang telah saya kerjakan sebagai bagian dari perjalanan belajar dan pengembangan portofolio.</p>
+      <button
+        onclick="gantiTema()"
+        data-aos="fade-up"
+        data-aos-delay="200"
+        class="text-blue-600 px-6 py-3 border border-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition text-sm sm:text-base"
+      >
+        🌓 Toggle Mode
+      </button>
     </section>
-
-    <div class="text-center py-8">
-      <button class="filter-btn active px-4 py-2 mx-1 rounded bg-blue-600 text-white" data-filter="all">Semua</button>
-      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="html">HTML</button>
-      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="tailwind">Tailwind</button>
-      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="javascript">JavaScript</button>
-    </div>
 
     <!-- Grid Proyek -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-16 max-w-6xl mx-auto">
       <!-- Kartu Proyek -->
-      <div data-category="html tailwind javascript" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-105">
+      <div
+        data-category="html tailwind javascript"
+        data-aos="fade-up"
+        data-aos-delay="100"
+        class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-105"
+      >
         <img src="assets/preview-company.jpeg" alt="Landing Page Freelancer" class="w-full h-48 object-cover" />
         <div class="p-6">
           <h3 class="text-xl font-bold mb-2">Landing Page Freelancer</h3>
@@ -58,7 +84,7 @@
       </div>
 
       <!-- Undangan Digital -->
-      <div data-category="tailwind javascript" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-105">
+      <div data-category="tailwind javascript" ata-aos="fade-up" data-aos-delay="100" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-105">
         <img src="assets/preview-undangan-digital.jpeg" alt="Undangan Pernikahan Digital" class="w-full h-48 object-cover" />
         <div class="p-6">
           <h3 class="text-xl font-bold mb-2">Undangan Pernikahan Digital</h3>
@@ -72,7 +98,7 @@
       </div>
 
       <!-- Jual Motor -->
-      <div data-category="html tailwind" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-105">
+      <div data-category="html tailwind" ata-aos="fade-up" data-aos-delay="100" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-105">
         <img src="assets/preview-landing-motor.png" alt="Landing Page Jual Motor" class="w-full h-48 object-cover" />
         <div class="p-6">
           <h3 class="text-xl font-bold mb-2">Landing Page Jual Motor</h3>
@@ -89,39 +115,12 @@
     <!-- Footer -->
     <footer class="text-center text-sm text-gray-400 py-6">&copy; 2025 Syahrul.dev - Semua proyek dibuat mandiri sebagai bukti keterampilan nyata</footer>
 
+    <script src="js/filter.js"></script>
+    <!-- AOS & Script -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-      //Tombol Humbleger Responsive HP
-      const toggleBtn = document.getElementById("toggleBtn");
-      const mobileMenu = document.getElementById("mobileMenu");
-
-      if (toggleBtn && mobileMenu) {
-        toggleBtn.addEventListener("click", () => {
-          mobileMenu.classList.toggle("hidden");
-        });
-      }
-      //Filter data
-      const filterButtons = document.querySelectorAll(".filter-btn");
-      const projectCards = document.querySelectorAll(".project-card");
-
-      filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          // Ganti tombol aktif
-          filterButtons.forEach((btn) => btn.classList.remove("bg-blue-600", "text-white", "active"));
-          button.classList.add("bg-blue-600", "text-white", "active");
-
-          const filter = button.dataset.filter;
-
-          projectCards.forEach((card) => {
-            const categories = card.dataset.category;
-
-            if (filter === "all" || categories.includes(filter)) {
-              card.classList.remove("hidden");
-            } else {
-              card.classList.add("hidden");
-            }
-          });
-        });
-      });
+      AOS.init();
     </script>
+    <script src="js/script.js"></script>
   </body>
 </html>
