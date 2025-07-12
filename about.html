@@ -30,7 +30,7 @@
     <div id="navContainer"></div>
 
     <script defer>
-      fetch("header.html")
+      fetch("components/header.html")
         .then((res) => res.text())
         .then((data) => {
           document.getElementById("navContainer").innerHTML = data;

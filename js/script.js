@@ -18,14 +18,45 @@ window.onload = () => {
 };
 
 //Tombol Humbleger Responsive HP
-const toggleBtn = document.getElementById("toggleBtn");
-const mobileMenu = document.getElementById("mobileMenu");
+// loadComponent("navContainer", "./components/header.html", () => {
+//   //ini baru dijalankan setelah header selesai dimuat
+//   const toggleBtn = document.getElementById("toggleBtn");
+//   const mobileMenu = document.getElementById("mobileMenu");
 
-if (toggleBtn && mobileMenu) {
-  toggleBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
+//   if (toggleBtn && mobileMenu) {
+//     toggleBtn.addEventListener("click", () => {
+//       mobileMenu.classList.toggle("hidden");
+//     });
+//   }
+// });
+
+// Fungsi umum untuk load komponen
+function loadComponent(id, filePath, callback) {
+  fetch(filePath)
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById(id).innerHTML = data;
+      if (callback) callback();
+    })
+    .catch((err) => console.error("Gagal load komponen:", err));
 }
+
+// Load header dan footer setelah halaman siap
+window.addEventListener("DOMContentLoaded", () => {
+  loadComponent("navContainer", "components/header.html", () => {
+    const toggleBtn = document.getElementById("toggleBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    }
+  });
+
+  // loadComponent("footerContainer", "components/footer.html");
+});
+
 // 🌐 Validasi Form Kontak
 //Notifikasi Visual(Ganti alert)
 function tampilkanNotif(pesan, tipe = "success") {
