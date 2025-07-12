@@ -42,10 +42,17 @@
       <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Berikut beberapa proyek yang telah saya kerjakan sebagai bagian dari perjalanan belajar dan pengembangan portofolio.</p>
     </section>
 
+    <div class="text-center py-8">
+      <button class="filter-btn active px-4 py-2 mx-1 rounded bg-blue-600 text-white" data-filter="all">Semua</button>
+      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="html">HTML</button>
+      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="tailwind">Tailwind</button>
+      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="javascript">JavaScript</button>
+    </div>
+
     <!-- Grid Proyek -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-16 max-w-6xl mx-auto">
       <!-- Kartu Proyek -->
-      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+      <div data-category="html tailwind javascript" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
         <img src="assets/preview-company.jpeg" alt="Landing Page Freelancer" class="w-full h-48 object-cover" />
         <div class="p-6">
           <h3 class="text-xl font-bold mb-2">Landing Page Freelancer</h3>
@@ -59,7 +66,7 @@
       </div>
 
       <!-- Undangan Digital -->
-      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+      <div data-category="tailwind javascript" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
         <img src="assets/preview-undangan-digital.jpeg" alt="Undangan Pernikahan Digital" class="w-full h-48 object-cover" />
         <div class="p-6">
           <h3 class="text-xl font-bold mb-2">Undangan Pernikahan Digital</h3>
@@ -73,7 +80,7 @@
       </div>
 
       <!-- Jual Motor -->
-      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+      <div data-category="html tailwind" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
         <img src="assets/preview-landing-motor.png" alt="Landing Page Jual Motor" class="w-full h-48 object-cover" />
         <div class="p-6">
           <h3 class="text-xl font-bold mb-2">Landing Page Jual Motor</h3>
@@ -107,6 +114,30 @@
 
       toggleBtn.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
+      });
+
+      //Filter data
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const projectCards = document.querySelectorAll(".project-card");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Ganti tombol aktif
+          filterButtons.forEach((btn) => btn.classList.remove("bg-blue-600", "text-white", "active"));
+          button.classList.add("bg-blue-600", "text-white", "active");
+
+          const filter = button.dataset.filter;
+
+          projectCards.forEach((card) => {
+            const categories = card.dataset.category;
+
+            if (filter === "all" || categories.includes(filter)) {
+              card.classList.remove("hidden");
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+        });
       });
     </script>
   </body>
