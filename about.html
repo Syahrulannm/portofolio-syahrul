@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang Saya - Syahrul.dev</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 =">
+    <nav class="bg-white dark:bg-gray-900 shadow-md px-4 py-3">
+      <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <div class="text-2xl font-bold text-blue-600 dark:text-blue-500">Syahrul.dev</div>
+
+        <!-- Tombol hamburger -->
+        <button id="toggleBtn" class="md:hidden text-2xl px-2 rounded-lg border border-gray-800 dark:border-gray-100 text-gray-800 dark:text-gray-100 transition">☰</button>
+
+        <!-- Dekstop Menu -->
+        <ul id="menu" class="hidden md:flex space-x-6 text-gray-700 dark:text-white font-semibold">
+          <li><a href="index.html#beranda" class="hover:text-blue-500">Beranda</a></li>
+          <li><a href="about.html" class="hover:text-blue-500 hover:underline">Tentang</a></li>
+          <li><a href="project.html" class="hover:text-blue-500 hover:underline">Proyek</a></li>
+          <li><a href="index.html#kontak" class="hover:text-blue-500">Kontak</a></li>
+        </ul>
+      </div>
+
+      <!-- Menu di HP -->
+      <ul id="mobileMenu" class="md:hidden hidden mt-4 space-y-2 text-gray-700 dark:text-white font-semibold">
+        <li><a href="index.html#beranda" class="hover:text-blue-500">Beranda</a></li>
+        <li><a href="about.html" class="hover:text-blue-500 hover:underline">Tentang</a></li>
+        <li><a href="project.html" class="hover:text-blue-500 hover:underline">Proyek</a></li>
+        <li><a href="index.html#kontak" class="hover:text-blue-500">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white font-sans transition duration-300">
+    <!-- Header -->
+    <section class="text-center py-20 px-6 bg-gradient-to-br from-white to-slate-100 dark:from-gray-900 dark:to-gray-800">
+      <h1 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Tentang Saya</h1>
+      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Seorang Frontend Developer yang percaya bahwa tampilan web yang rapi dan responsif adalah bagian dari pengalaman terbaik pengguna.</p>
+    </section>
+
+    <section class="max-w-4xl mx-auto py-16 px-6">
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Perjalanan Saya</h2>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        Saya lulusan D3 Teknik Informatika tahun 2023. Awalnya hanya mengenal dasar HTML & CSS, tapi belakangan saya mulai fokus mendalami frontend development secara serius dan terstruktur.
+        <br /><br />
+        Saat ini, saya sedang membangun portofolio nyata, menyelesaikan roadmap belajar pribadi, dan mengerjakan proyek kecil untuk mengasah kemampuan serta membuktikan hasil kerja nyata.
+      </p>
+    </section>
+
+    <!-- Skill & Tools -->
+    <section class="bg-slate-100 dark:bg-gray-900 py-16 px-6">
+      <h2 class="text-2xl font-semibold text-center mb-8">Skill & Tools</h2>
+      <div class="flex flex-wrap justify-center gap-4 text-sm">
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full dark:bg-blue-900 dark:text-blue-300">HTML</span>
+        <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full dark:bg-green-900 dark:text-green-300">CSS</span>
+        <span class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full dark:bg-yellow-900 dark:text-yellow-300">JavaScript</span>
+        <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full dark:bg-purple-900 dark:text-purple-300">Tailwind CSS</span>
+        <span class="bg-gray-100 text-gray-800 px-4 py-2 rounded-full dark:bg-gray-700 dark:text-white">Git & GitHub</span>
+        <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full dark:bg-indigo-900 dark:text-indigo-300">Netlify</span>
+      </div>
+    </section>
+
+    <section class="py-16 px-6 max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Gaya Kerja Saya</h2>
+      <p class="text-gray-700 dark:text-gray-300">
+        Saya berusaha membangun website dengan pendekatan yang ringan, terstruktur, mudah dipahami, dan selalu mobile-friendly. Saya juga mengedepankan komunikasi yang jelas dan terus belajar dari feedback.
+      </p>
+    </section>
+
+    <!-- CTA -->
+    <div class="text-center py-8">
+      <a href="index.html#proyek" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded transition">🔎 Lihat Proyek Saya</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-sm text-gray-400 py-6">&copy; 2025 Syahrul.dev - Dibuat dengan ❤️ dan semangat belajar</footer>
+
+    <!-- Highlight Active -->
+    <script>
+      const navLinks = document.querySelectorAll("nav a");
+      const currentUrl = window.location.pathname;
+
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentUrl || currentUrl.includes(link.getAttribute("href"))) {
+          link.classList.add("text-blue-600", "dark:text-blue-400", "font-semibold", "underline");
+        }
+      });
+
+      //Tombol Humbleger Responsive HP
+      const toggleBtn = document.getElementById("toggleBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      toggleBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>

@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portofolio - Syahrul</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+
+    <title>Syahrul – Frontend Developer & Web Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 🔗 AOS CSS (di <head>) -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
@@ -25,6 +27,21 @@
     <meta name="twitter:description" content="Portofolio digital interaktif Syahrul Annam. Jelajahi proyek nyata dan layanan web development yang profesional." />
     <meta name="twitter:image" content="https://portofolio-syahrul.netlify.app/img/preview.jpg" />
 
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Syahrul Annam",
+        "url": "https://portofolio-syahrul.netlify.app",
+        "sameAs": ["https://github.com/Syahrulannm", "https://linkedin.com/in/syahrul-annam"],
+        "jobTitle": "Frontend Developer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Syahrul.dev"
+        }
+      }
+    </script>
+
     <script>
       //Konfigurasi Tailwind(Untuk darkMode:'class')
       tailwind.config = {
@@ -41,7 +58,7 @@
 
   <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white transition duration-300">
     <!-- Navbar -->
-    <header class="top-0 z-50 =">
+    <header class="sticky top-0 z-50 =">
       <nav class="bg-white dark:bg-gray-900 shadow-md px-4 py-3">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
           <div class="text-2xl font-bold text-blue-600 dark:text-blue-500">Syahrul.dev</div>
@@ -52,9 +69,9 @@
           <!-- Dekstop Menu -->
           <ul id="menu" class="hidden md:flex space-x-6 text-gray-700 dark:text-white font-semibold">
             <li><a href="#beranda" class="hover:text-blue-500">Beranda</a></li>
-            <li><a href="#tentang" class="hover:text-blue-500">Tentang</a></li>
+            <li><a href="about.html" class="hover:text-blue-500 hover:underline">Tentang</a></li>
             <li><a href="#skill" class="hover:text-blue-500">Skill</a></li>
-            <li><a href="#proyek" class="hover:text-blue-500">Proyek</a></li>
+            <li><a href="project.html" class="hover:text-blue-500 hover:underline">Proyek</a></li>
             <li><a href="#kontak" class="hover:text-blue-500">Kontak</a></li>
           </ul>
         </div>
@@ -62,9 +79,9 @@
         <!-- Menu di HP -->
         <ul id="mobileMenu" class="md:hidden hidden mt-4 space-y-2 text-gray-700 dark:text-white font-semibold">
           <li><a href="#beranda" class="hover:text-blue-500">Beranda</a></li>
-          <li><a href="#tentang" class="hover:text-blue-500">Tentang</a></li>
+          <li><a href="about.html" class="hover:text-blue-500 hover:underline">Tentang</a></li>
           <li><a href="#skill" class="hover:text-blue-500">Skill</a></li>
-          <li><a href="#proyek" class="hover:text-blue-500">Proyek</a></li>
+          <li><a href="project.html" class="hover:text-blue-500 hover:underline">Proyek</a></li>
           <li><a href="#kontak" class="hover:text-blue-500">Kontak</a></li>
         </ul>
       </nav>
