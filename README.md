@@ -1,55 +1,55 @@
-# 🌐 Portofolio Syahrul
+# 🌐 Syahrul.dev – Portofolio Front-End Developer
 
-Selamat datang! Saya **Syahrul**, seorang Frontend Developer pemula yang sedang membangun portofolio pribadi dari nol. Website ini dibuat sebagai bagian dari roadmap belajar selama 6 minggu, dengan tujuan menampilkan hasil latihan, proyek mini, dan keahlian yang terus berkembang.
-
----
-
-## 🚀 Fitur Utama
-
-- 🔹 **Responsive Design** — tampil optimal di mobile & desktop
-- 🌙 **Dark Mode Otomatis + Toggle Manual**
-- 🎯 **Sticky Navbar + Hamburger Menu**
-- 💌 **Form Kontak langsung via Netlify Forms**
-- 🎨 **Animasi Scroll (AOS.js)**
-- 🧩 **Tampilan bersih, minimalis, dan profesional**
+Ini adalah portofolio pribadi saya sebagai Front-End Developer, menampilkan berbagai proyek nyata dan mini project. Dibangun dengan HTML, Tailwind CSS, dan JavaScript secara modular dan responsif.
 
 ---
 
-## 🛠 Teknologi yang Digunakan
+## 🚀 Demo Langsung
+
+## 🔗 [https://portofolio-syahrul.netlify.app](https://portofolio-syahrul.netlify.app)
+
+## 🛠️ Teknologi
 
 - **HTML5**
+
 - **Tailwind CSS**
+
 - **JavaScript DOM**
-- **Netlify (Hosting & Form Handling)**
-- **Git + GitHub**
-- **AOS (Animate on Scroll)**
+
+- **AOS.js (animasi saat scroll)**
+
+- **Modular Components (header, project cards, dsb)**
+
+- **Dark/Light Mode (otomatis & toggle)**
+
+- **Netlify (untuk deploy)**
+
+- **GitHub (versi kontrol)**
 
 ---
 
-## 🧱 Struktur Halaman
+## ✨ Fitur Utama
 
-- 🏠 Hero Section — pengenalan singkat
-- 👨‍💻 Tentang Saya — siapa saya dan apa yang sedang saya pelajari
-- 🛠 Skill & Tools — teknologi yang telah dipelajari
-- 💼 Proyek — beberapa mini project (kartu profil, landing page, toggle tema)
-- 📞 Kontak — tombol langsung & form Netlify
-- 🦶 Footer — penutup & branding
+- 🎨 Dark/Light Mode dengan deteksi otomatis sistem & penyimpanan preferensi
+
+- 🎯 Filter Proyek interaktif berdasarkan teknologi
+
+- 📱 Desain Responsif 100% mobile friendly
+
+- 🧠 Bahasa Ganda (ID / EN) untuk bagian "Tentang"
+
+- ⚡ Animasi Scroll (AOS) yang halus dan ringan
+
+- 🔗 Link Langsung ke Proyek dan Kode Sumber
 
 ---
 
-## 🔗 Live Demo
+💡 Rencana Berikutnya
+Refactor ke React.js untuk belajar komponen dinamis
 
-🌐 [https://portofolio-syahrul.netlify.app](https://portofolio-syahrul.netlify.app)
+- Tambah halaman blog atau studi kasus
 
----
-
-## ✨ Proyek Mini yang Ditampilkan
-
-| Nama Proyek            | Tools                   | Live Demo                                            |
-| ---------------------- | ----------------------- | ---------------------------------------------------- |
-| Landing Page Tailwind  | Tailwind CSS, Dark Mode | 🔗 [Lihat](https://landing-page-syahrul.netlify.app) |
-| Toggle Tema Dark/Light | Tailwind + JavaScript   | 🔗 [Lihat](https://dark-light-syahrul.netlify.app)   |
-| Kartu Profil Sederhana | HTML & CSS Flexbox      | 🔗 [Lihat](https://kartu-profil-namsy.netlify.app)   |
+- Tambah fitur "Download CV" & testimoni
 
 ---
 
