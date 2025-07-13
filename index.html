@@ -25,7 +25,7 @@
     <!-- 🔗 AOS CSS (di <head>) -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <!-- Konfigurasi Tailwind CDN dengan mode 'class' -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script rel="preconnect" src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         darkMode: "class",
@@ -59,7 +59,7 @@
           </div>
         </div>
         <!-- Gambar kanan -->
-        <div class="flex-1">
+        <div class="flex-1" loading="lazy">
           <img
             src="/assets/syahrul-hero.webp"
             alt="Syahrul Annam"
@@ -167,8 +167,8 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="js/theme.js" defer></script>
     <!-- <script src="js/include.js"></script> -->
-    <script src="js/translate.js"></script>
-    <script src="js/form.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/translate.js" defer></script>
+    <script src="js/form.js" defer></script>
+    <script src="js/script.js" defer></script>
   </body>
 </html>
