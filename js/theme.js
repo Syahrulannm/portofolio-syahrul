@@ -1,21 +1,23 @@
 // theme.js
-function initThemeToggle() {
+document.addEventListener("DOMContentLoaded", function () {
   const html = document.documentElement;
   const savedTheme = localStorage.getItem("theme");
 
-  // Terapkan tema awal
+  //Terapkan tema tersimpan saat halaman dimuat
   if (savedTheme === "dark") {
     html.classList.add("dark");
   } else {
     html.classList.remove("dark");
   }
 
-  // Cari tombol toggle
+  //Tombol toggle
   const toggleBtn = document.getElementById("theme-toggle");
+
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
       html.classList.toggle("dark");
 
+      // Simpan preferensi pengguna
       if (html.classList.contains("dark")) {
         localStorage.setItem("theme", "dark");
       } else {
@@ -23,4 +25,4 @@ function initThemeToggle() {
       }
     });
   }
-}
+});

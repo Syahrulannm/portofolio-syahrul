@@ -1,22 +1,3 @@
-// <!-- 🌓 Toggle Mode Script -->
-// function gantiTema() {
-//   const isDark = document.documentElement.classList.contains("dark"); //Untuk manggil classlist dari "dark"
-//   if (isDark) {
-//     document.documentElement.classList.remove("dark"); //Hapus mode gelap
-//     localStorage.setItem("mode", "light"); //Ganti ke mode terang
-//   } else {
-//     document.documentElement.classList.add("dark"); //Tambahkan mode gelap
-//     localStorage.setItem("mode", "dark"); //Aktifkan mode gelap
-//   }
-// }
-
-// //Aktifkan mode dari localStorage saat saat halaman dibuka
-// window.onload = () => {
-//   if (localStorage.getItem("mode") === "dark") {
-//     document.documentElement.classList.add("dark");
-//   }
-// };
-
 // Fungsi umum untuk load komponen
 function loadComponent(id, url, callback) {
   const target = document.getElementById(id);
@@ -47,20 +28,36 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//Menu humberger
+// script.js
+
+// Fungsi untuk toggle dark mode
+function initThemeToggle() {
+  const html = document.documentElement;
+  const saved = localStorage.getItem("theme");
+  if (saved === "dark") html.classList.add("dark");
+  else html.classList.remove("dark");
+
+  const toggle = document.querySelectorAll("#theme-toggle");
+  toggle.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
+    });
+  });
+}
+
+// Fungsi untuk toggle mobile nav
 function initMobileNav() {
   const toggleBtn = document.getElementById("toggleBtn");
   const mobileMenu = document.getElementById("mobileMenu");
 
-  if (!toggleBtn || !mobileMenu) {
-    console.warn("Tombol atau menu mobile tidak ditemukan");
-    return;
-  }
+  if (!toggleBtn || !mobileMenu) return;
 
   toggleBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
   });
 
+  // opsional: tutup menu jika link diklik
   mobileMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       mobileMenu.classList.add("hidden");
@@ -68,20 +65,31 @@ function initMobileNav() {
   });
 }
 
-// Load header dan footer setelah halaman siap
-window.addEventListener("DOMContentLoaded", () => {
-  loadComponent("header", "components/header.html", () => {
-    const toggleBtn = document.getElementById("toggleBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
+// 🟡 INI bagian pentingnya
+// Jalankan setelah DOM siap
+document.addEventListener("DOMContentLoaded", () => {
+  const nav = document.getElementById("header");
 
-    if (toggleBtn && mobileMenu) {
-      toggleBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-    }
-  });
+  if (!nav) {
+    console.warn("Element #header tidak ditemukan");
+    return;
+  }
 
-  // loadComponent("footerContainer", "components/footer.html");
+  fetch("components/header.html")
+    .then((res) => {
+      if (!res.ok) throw new Error(`Gagal fetch: ${res.status}`);
+      return res.text();
+    })
+    .then((html) => {
+      nav.innerHTML = html;
+
+      // 🟢 TARUH DI SINI SETELAH HEADER DIMUAT
+      initThemeToggle();
+      initMobileNav();
+    })
+    .catch((err) => {
+      console.error("Gagal load header:", err);
+    });
 });
 
 // <!-- ✅ Akhir AOS index.html -->
