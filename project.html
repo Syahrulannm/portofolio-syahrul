@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
     <title>Proyek Saya - Syahrul.dev</title>
     <!-- Meta SEO untuk project.html -->
     <title>Proyek Web - Syahrul.dev</title>
@@ -43,32 +44,36 @@
       <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-4">Berikut beberapa proyek yang telah saya kerjakan sebagai bagian dari perjalanan belajar dan pengembangan portofolio.</p>
     </section>
 
-    <!-- 🔘 Tombol Filter -->
-    <div id="filterBar" class="flex flex-wrap justify-center gap-4 py-6">
-      <button class="filter-btn active px-4 py-2 mx-1 rounded bg-blue-600 text-white" data-filter="all">Semua</button>
-      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="html">HTML</button>
-      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="css">CSS</button>
-      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="tailwind">Tailwind</button>
-      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="javascript">JavaScript</button>
-    </div>
-
-    <div id="proyekContainer"></div>
+    <!-- Panggil dulu komponen HTML -->
+    <!-- Komponen -->
+    <div id="projectCards"></div>
     <script>
       fetch("components/project-cards-full.html")
         .then((res) => res.text())
         .then((data) => {
-          document.getElementById("proyekContainer").innerHTML = data;
+          document.getElementById("projectCards").innerHTML = data;
+
+          // ✅ Jalankan AOS setelah kartu masuk
+          AOS.init({
+            once: false,
+            duration: 700,
+            easing: "ease-in-out",
+          });
+
+          // ✅ Baru jalankan filter
+          const script = document.createElement("script");
+          script.src = "/js/filter.js";
+          script.defer = true;
+          document.body.appendChild(script);
         });
     </script>
 
     <!-- Footer -->
-    <footer class="text-center text-sm text-gray-400 py-6">&copy; 2025 Syahrul.dev - Semua proyek dibuat mandiri sebagai bukti keterampilan nyata</footer>
+    <footer class="text-center text-sm text-gray-400 py-6 px-6">&copy; 2025 Syahrul.dev - Semua proyek dibuat mandiri sebagai bukti keterampilan nyata</footer>
 
     <!-- AOS & Script -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script src="js/theme.js" defer></script>
-    <script src="js/include.js" defer></script>
-    <script src="js/filter.js" defer></script>
-    <script src="js/script.js" defer></script>
+    <script src="/js/theme.js" defer></script>
+    <script src="/js/script.js" defer></script>
   </body>
 </html>
