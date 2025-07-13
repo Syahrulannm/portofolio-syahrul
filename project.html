@@ -9,10 +9,7 @@
     <meta property="og:title" content="Proyek – Syahrul.dev" />
     <meta property="og:image" content="https://portofolio-syahrul.netlify.app/img/preview.jpg" />
     <meta property="og:url" content="https://portofolio-syahrul.netlify.app/proyek.html" />
-
     <title>Proyek Saya - Syahrul.dev</title>
-    <script src="js/theme.js"></script>
-
     <!-- 🔗 AOS CSS (sebelum [body] ) -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <!-- 🔗 AOS JS (sebelum [body] ) -->
@@ -22,105 +19,52 @@
         AOS.init();
       });
     </script>
-    <!-- Deteksi Tema Otomatis  -->
+    <!-- Konfigurasi Tailwind CDN dengan mode 'class' -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
   </head>
 
   <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white font-sans transition duration-300">
     <!-- Include header -->
-    <div id="navContainer"></div>
-    <script defer>
-      fetch("components/header.html")
-        .then((res) => res.text())
-        .then((data) => {
-          document.getElementById("navContainer").innerHTML = data;
-        });
-    </script>
-
-    <div id="filterContainer"></div>
-    <script>
-      fetch("components/filter-project.html")
-        .then((res) => res.text())
-        .then((data) => {
-          document.getElementById("filterContainer").innerHTML = data;
-          if (typeof initFilter === "function") initFilter(); // jalankan JS setelah di-load
-        });
-    </script>
+    <div id="header"></div>
 
     <!-- Hero section -->
 
     <section class="text-center py-20 px-6 bg-gradient-to-br from-white to-slate-100 dark:from-gray-900 dark:to-gray-800">
       <h1 class="text-4xl font-bold mb-4">Proyek Saya</h1>
       <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-4">Berikut beberapa proyek yang telah saya kerjakan sebagai bagian dari perjalanan belajar dan pengembangan portofolio.</p>
-      <button
-        onclick="gantiTema()"
-        data-aos="fade-up"
-        data-aos-delay="200"
-        class="text-blue-600 px-6 py-3 border border-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition text-sm sm:text-base"
-      >
-        🌓 Toggle Mode
-      </button>
     </section>
 
-    <!-- Grid Proyek -->
-    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-16 max-w-6xl mx-auto">
-      <!-- Kartu Proyek -->
-      <div
-        data-category="html tailwind javascript"
-        data-aos="fade-up"
-        data-aos-delay="100"
-        class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-105"
-      >
-        <img src="assets/preview-company.jpeg" alt="Landing Page Freelancer" class="w-full h-48 object-cover" />
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">Landing Page Freelancer</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300">Landing page sederhana dan profesional untuk menawarkan jasa freelance secara online. Responsif dan terintegrasi ke WhatsApp.</p>
-          <div class="mt-4 flex flex-wrap gap-2 text-xs">
-            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded dark:bg-blue-900 dark:text-blue-300">HTML</span>
-            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded dark:bg-purple-900 dark:text-purple-300">Tailwind CSS</span>
-          </div>
-          <a href="https://company-profil-syahrul.netlify.app" target="_blank" class="block mt-4 text-blue-600 dark:text-blue-400 hover:underline text-sm">🔗 Lihat Proyek</a>
-        </div>
-      </div>
+    <!-- 🔘 Tombol Filter -->
+    <div id="filterBar" class="flex flex-wrap justify-center gap-4 py-6">
+      <button class="filter-btn active px-4 py-2 mx-1 rounded bg-blue-600 text-white" data-filter="all">Semua</button>
+      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="html">HTML</button>
+      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="css">CSS</button>
+      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="tailwind">Tailwind</button>
+      <button class="filter-btn px-4 py-2 mx-1 rounded bg-gray-200 dark:bg-gray-700" data-filter="javascript">JavaScript</button>
+    </div>
 
-      <!-- Undangan Digital -->
-      <div data-category="tailwind javascript" ata-aos="fade-up" data-aos-delay="100" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-105">
-        <img src="assets/preview-undangan-digital.jpeg" alt="Undangan Pernikahan Digital" class="w-full h-48 object-cover" />
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">Undangan Pernikahan Digital</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300">Undangan interaktif dengan fitur musik, form ucapan, dan animasi AOS. Tampilan elegan dan ramah mobile.</p>
-          <div class="mt-4 flex flex-wrap gap-2 text-xs">
-            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded dark:bg-yellow-900 dark:text-yellow-300">JavaScript</span>
-            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded dark:bg-pink-900 dark:text-pink-300">Tailwind CSS</span>
-          </div>
-          <a href="https://undangan-digital-syahrul.netlify.app" target="_blank" class="block mt-4 text-blue-600 dark:text-blue-400 hover:underline text-sm">🔗 Lihat Proyek</a>
-        </div>
-      </div>
-
-      <!-- Jual Motor -->
-      <div data-category="html tailwind" ata-aos="fade-up" data-aos-delay="100" class="project-card bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-105">
-        <img src="assets/preview-landing-motor.png" alt="Landing Page Jual Motor" class="w-full h-48 object-cover" />
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">Landing Page Jual Motor</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-300">Halaman promo motor dengan slider, efek AOS, dan tombol beli langsung ke WhatsApp. Sudah responsif dan ringan.</p>
-          <div class="mt-4 flex flex-wrap gap-2 text-xs">
-            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded dark:bg-blue-900 dark:text-blue-300">HTML</span>
-            <span class="bg-green-100 text-green-800 px-2 py-1 rounded dark:bg-green-900 dark:text-green-300">Tailwind CSS</span>
-          </div>
-          <a href="https://landing-motor-syahrul.netlify.app" target="_blank" class="block mt-4 text-blue-600 dark:text-blue-400 hover:underline text-sm">🔗 Lihat Proyek</a>
-        </div>
-      </div>
-    </section>
+    <div id="proyekContainer"></div>
+    <script>
+      fetch("components/project-cards-full.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("proyekContainer").innerHTML = data;
+        });
+    </script>
 
     <!-- Footer -->
     <footer class="text-center text-sm text-gray-400 py-6">&copy; 2025 Syahrul.dev - Semua proyek dibuat mandiri sebagai bukti keterampilan nyata</footer>
 
-    <script src="js/filter.js"></script>
     <!-- AOS & Script -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/include.js"></script>
+    <script src="js/filter.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

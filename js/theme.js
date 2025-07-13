@@ -1,20 +1,26 @@
-// 🌙 Sinkronisasi dark mode dari localStorage atau preferensi sistem
-// js/theme.js (sudah kamu buat)
-(function () {
-  const theme = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  if (theme === "dark" || (!theme && prefersDark)) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
-})();
-
-// 🌗 Fungsi untuk toggle tema (bisa dipanggil dari tombol)
-function gantiTema() {
+// theme.js
+function initThemeToggle() {
   const html = document.documentElement;
-  const isDark = html.classList.contains("dark");
+  const savedTheme = localStorage.getItem("theme");
 
-  html.classList.toggle("dark");
-  localStorage.setItem("theme", isDark ? "light" : "dark");
+  // Terapkan tema awal
+  if (savedTheme === "dark") {
+    html.classList.add("dark");
+  } else {
+    html.classList.remove("dark");
+  }
+
+  // Cari tombol toggle
+  const toggleBtn = document.getElementById("theme-toggle");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      html.classList.toggle("dark");
+
+      if (html.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+    });
+  }
 }

@@ -22,9 +22,6 @@
     <meta name="twitter:image" content="https://portofolio-syahrul.netlify.app/img/preview.jpg" />
     <!-- <link rel="icon" href="img/favicon.ico" type="image/x-icon" /> -->
     <title>Syahrul – Frontend Developer & Web Portfolio</title>
-    <script src="js/theme.js"></script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
     <!-- 🔗 AOS CSS (di <head>) -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <!-- 🔗 AOS JS (sebelum [body] ) -->
@@ -34,18 +31,18 @@
         AOS.init();
       });
     </script>
+    <!-- Konfigurasi Tailwind CDN dengan mode 'class' -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
   </head>
 
   <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white transition duration-300">
     <!-- Include header -->
-    <div id="navContainer"></div>
-    <script defer>
-      fetch("components/header.html")
-        .then((res) => res.text())
-        .then((data) => {
-          document.getElementById("navContainer").innerHTML = data;
-        });
-    </script>
+    <div id="header"></div>
 
     <!-- 🏠 Hero Section -->
     <section id="beranda" class="py-20 px-6 scroll-mt-20 bg-gradient-to-br from-white via-slate-100 to-slate-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition duration-300">
@@ -58,14 +55,14 @@
           </p>
           <div class="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
             <a href="#proyek" data-aos="zoom-in" data-aos-delay="150" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md transition text-sm sm:text-base">🔎 Lihat Proyek</a>
-            <button
+            <!-- <button
               onclick="gantiTema()"
               data-aos="fade-up"
               data-aos-delay="200"
               class="text-blue-600 px-6 py-3 border border-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition text-sm sm:text-base"
             >
               🌓 Toggle Mode
-            </button>
+            </button> -->
           </div>
         </div>
         <!-- Gambar kanan -->
@@ -119,123 +116,14 @@
     </section>
 
     <!-- 🧰 Proyek -->
-    <!-- //Section Kartu-Kartu proyek -->
-    <section id="proyek" class="py-20 scroll-mt-20 bg-gradient-to-br from-slate-50 via-slate-50 to-slate-200 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 transition">
-      <h3 data-aos="zoom-in" class="text-3xl font-bold text-center">Proyek Saya</h3>
-      <div class="py-16 px-6 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <!-- Kartu Proyek 1-->
-        <div data-aos="fade-up" data-aos-delay="100" class="border-2xl rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-xl transition">
-          <img src="assets/preview-landing.png" alt="Preview Proyek" class="w-full h-30 object-cover" />
-          <div class="p-4 sm:p-6">
-            <h4 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Landing Page Tailwind</h4>
-            <p class="text-sm text-gray-600 dark:text-gray-300">Landing page responsif dengan Tailwind CSS. Mendukung dark mode otomatis dan sudah di-deploy ke Netlify.</p>
-            <div class="flex items-center gap-2 mt-4">
-              <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">HTML</span>
-              <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">Tailwind</span>
-              <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">JavaScript</span>
-            </div>
-            <a href="https://landing-page-syahrul.netlify.app/" target="_blank" class="block mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">🔗 Lihat Proyek</a>
-            <a href="https://github.com/Syahrulannm/landing-page-tailwind" target="_blank" class="block text-sm text-gray-600 dark:text-gray-400 hover:underline mt-1">💻 Lihat Kode</a>
-          </div>
-        </div>
-        <!-- Kartu Proyek 2-->
-        <div data-aos="fade-up" data-aos-delay="100" class="border-2xl rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-xl transition">
-          <img src="assets/preview-dark-light.png" alt="Preview Proyek" class="w-full h-30 object-cover" />
-          <div class="p-4 sm:p-6">
-            <h4 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Toggle Tema (Dark/Light)</h4>
-            <p class="text-sm text-gray-600 dark:text-gray-300">Fitur saklar untuk tema gelap dan terang, menggunakan JavaScript dan Tailwind. Mode tersimpan otomatis.</p>
-            <div class="flex items-center gap-2 mt-4">
-              <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">JavaScript</span>
-              <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">Tailwind</span>
-            </div>
-            <a href="https://dark-light-syahrul.netlify.app/" target="_blank" class="block mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">🔗 Lihat Proyek</a>
-            <a href="https://github.com/Syahrulannm/toggle-theme" target="_blank" class="block text-sm text-gray-600 dark:text-gray-400 hover:underline mt-1">💻 Lihat Kode</a>
-          </div>
-        </div>
-        <!-- Kartu Proyek 3 -->
-        <div data-aos="fade-up" data-aos-delay="100" class="border-2xl rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-xl transition">
-          <img src="assets/preview-kartu-profil.png" alt="Preview Proyek" class="w-full h-30 object-cover" />
-          <div class="p-4 sm:p-6">
-            <h4 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Kartu Profil Sederhana</h4>
-            <p class="text-sm text-gray-600 dark:text-gray-300">Kartu profil dengan desain sederhana dan bersih, menggunakan HTML dan CSS (tanpa framework).</p>
-            <div class="flex items-center gap-2 mt-4">
-              <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">HTML</span>
-              <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">CSS</span>
-            </div>
-            <a href="https://kartu-profil-namsy.netlify.app/" target="_blank" class="block mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">🔗 Lihat Proyek</a>
-            <a href="https://github.com/Syahrulannm/kartu-profil" target="_blank" class="block text-sm text-gray-600 dark:text-gray-400 hover:underline mt-1">💻 Lihat Kode</a>
-          </div>
-        </div>
-
-        <!-- Kartu Proyek 4 -->
-        <div data-aos="fade-up" data-aos-delay="100" class="border-2xl rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-xl transition">
-          <img src="assets/preview-landing-motor.png" alt="Preview Proyek" class="w-full h-30 object-cover" />
-          <div class="p-4 sm:p-6">
-            <h4 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Landing Page Jual Motor</h4>
-            <p class="text-sm text-gray-600 dark:text-gray-300"></p>
-            <div class="flex items-center gap-2 mt-4">
-              <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">HTML</span>
-              <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">Tailwind</span>
-              <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">JavaScript</span>
-            </div>
-            <a href="https://landing-motor-syahrul.netlify.app/" target="_blank" class="block mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">🔗 Lihat Proyek</a>
-            <a href="https://github.com/Syahrulannm/landing-motor-syahrul" target="_blank" class="block text-sm text-gray-600 dark:text-gray-400 hover:underline mt-1">💻 Lihat Kode</a>
-          </div>
-        </div>
-
-        <!-- Kartu Proyek 5 -->
-        <div data-aos="fade-up" data-aos-delay="100" class="border-2xl rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-xl transition">
-          <img src="assets/preview-filter-modal.jpeg" alt="Preview Proyek" class="w-full h-30 object-cover" />
-          <div class="p-4 sm:p-6">
-            <h4 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Katalog Motor Interaktif</h4>
-            <p class="text-sm text-gray-600 dark:text-gray-300">Landing page katalog motor dengan fitur pencarian real-time, hapus produk, dan popup detail. Dibangun menggunakan Tailwind CSS dan JavaScript DOM dinamis.</p>
-            <div class="flex items-center gap-2 mt-4">
-              <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">HTML</span>
-              <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">Tailwind</span>
-              <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">JavaScript</span>
-            </div>
-            <a href="https://produk-filter-modal.netlify.app/" target="_blank" class="block mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">🔗 Lihat Proyek</a>
-            <a href="https://github.com/Syahrulannm/produk-motor-filter-modal" target="_blank" class="block text-sm text-gray-600 dark:text-gray-400 hover:underline mt-1">💻 Lihat Kode</a>
-          </div>
-        </div>
-
-        <!-- Kartu Proyek 6 -->
-        <div data-aos="fade-up" data-aos-delay="100" class="border-2xl rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-xl transition">
-          <img src="assets/preview-undangan-digital.jpeg" alt="Preview Proyek" class="w-full h-30 object-cover" />
-          <div class="p-4 sm:p-6">
-            <h4 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Undangan Pernikahan Digital</h4>
-            <p class="text-sm text-gray-600 dark:text-gray-300">
-              Undangan pernikahan digital yang responsif dan elegan, dibangun dengan HTML, Tailwind CSS, dan JavaScript. Memiliki fitur musik latar, dark mode, RSVP interaktif, galeri, hingga ucapan tamu. Tersedia efek visual seperti bunga
-              jatuh dan lightbox untuk pengalaman yang lebih hidup.
-            </p>
-            <div class="flex items-center gap-2 mt-4">
-              <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">HTML</span>
-              <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">Tailwind</span>
-              <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">JavaScript</span>
-            </div>
-            <a href="https://undangan-digital-syahrul.netlify.app/" target="_blank" class="block mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">🔗 Lihat Proyek</a>
-            <a href="https://github.com/Syahrulannm/undangan-digital" target="_blank" class="block text-sm text-gray-600 dark:text-gray-400 hover:underline mt-1">💻 Lihat Kode</a>
-          </div>
-        </div>
-
-        <!-- Kartu Proyek 7 -->
-        <div data-aos="fade-up" data-aos-delay="100" class="border-2xl rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-xl transition">
-          <img src="assets/preview-company.jpeg" alt="Preview Proyek" class="w-full h-30 object-cover" />
-          <div class="p-4 sm:p-6">
-            <h4 class="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Company Profil - Syahrul.dev</h4>
-            <p class="text-sm text-gray-600 dark:text-gray-300">Website portofolio interaktif dan responsif menggunakan Tailwind CSS & JavaScript. Fitur dark mode, animasi, dan layout profesional.</p>
-            <div class="flex items-center gap-2 mt-4">
-              <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">HTML</span>
-              <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">Tailwind</span>
-              <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">JavaScript</span>
-            </div>
-            <a href="https://company-profil-syahrul.netlify.app/" target="_blank" class="block mt-4 text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">🔗 Lihat Proyek</a>
-            <a href="https://github.com/Syahrulannm/company-profil-syahrul" target="_blank" class="block text-sm text-gray-600 dark:text-gray-400 hover:underline mt-1">💻 Lihat Kode</a>
-          </div>
-        </div>
-        <!-- 🧩 Tambahkan kartu lain nanti ! ! -->
-      </div>
-    </section>
+    <div id="projectCardContainer"></div>
+    <script defer>
+      fetch("components/project-cards-short.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("projectCardContainer").innerHTML = data;
+        });
+    </script>
 
     <!-- 📞 Kontak -->
     <section id="kontak" class="py-20 px-6 scroll-mt-20 bg-gradient-to-br from-slate-50 via-slate-200 to-slate-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 transition duration-300">
@@ -283,8 +171,11 @@
     <footer class="bg-white p-4 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 text-center py-6 text-sm text-gray-500 dark:text-gray-400 transition">
       <p>&copy; 2025 <span class="font-semibold text-gray-800 dark:text-white">Syahrul.dev</span>. All rights reserved.</p>
     </footer>
-
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/include.js"></script>
+    <script src="js/translate.js"></script>
+    <script src="js/form.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

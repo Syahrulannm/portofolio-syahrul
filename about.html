@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tentang Saya - Syahrul.dev</title>
-    <script src="js/theme.js"></script>
-
     <!-- 🔗 AOS CSS (sebelum [body] ) -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <!-- 🔗 AOS JS (sebelum [body] ) -->
@@ -15,20 +13,18 @@
         AOS.init();
       });
     </script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Konfigurasi Tailwind CDN dengan mode 'class' -->
+     <script src="https://cdn.tailwindcss.com"></script>
+   <script>
+  tailwind.config = {
+    darkMode: 'class',
+  }
+</script>
   </head>
 
   <body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white font-sans transition duration-300">
     <!-- Include header -->
-    <div id="navContainer"></div>
-    <script defer>
-      fetch("components/header.html")
-        .then((res) => res.text())
-        .then((data) => {
-          document.getElementById("navContainer").innerHTML = data;
-        });
-    </script>
+    <div id="header"></div>
 
     <!-- Hero Section -->
     <section class="text-center py-20 px-6 bg-gradient-to-br from-white to-slate-100 dark:from-gray-900 dark:to-gray-800">
@@ -72,7 +68,9 @@
 
     <!-- Footer -->
     <footer class="text-center text-sm text-gray-400 py-6">&copy; 2025 Syahrul.dev - Dibuat dengan ❤️ dan semangat belajar</footer>
-
-    <script src="js/script.js"></script>
+    <script src="js/theme.js" defer></script>
+     <script src="js/include.js"></script>
+      <script src="js/script.js"></script>
+    </script>
   </body>
 </html>
